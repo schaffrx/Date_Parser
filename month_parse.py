@@ -7,7 +7,7 @@ month_acronyms: list = ["Jan","Feb","Mar","Apr","May",
 
 #open file and read individual strings for acronym inclusion
 with open('missoula.txt', 'r') as file:
-    content = file.read().replace('\n', '')
+    content = file.read()
 
 def get_months(target_list: list, content: str) -> list:
     """Gets the pertinent months out of the text
@@ -49,7 +49,7 @@ def get_day_month(month_list: list) -> list:
     day_list: list = str(list(range(1, 32)))
     for month in month_list:
         for day in day_list:
-            if day in month and month not in day_month:
+            if day in month:
                 day_month.append(month)
     return(day_month)
 
