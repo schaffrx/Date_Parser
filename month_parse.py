@@ -6,22 +6,6 @@ content = ""
 month_acronyms: list = ["Jan","Feb","Mar","Apr","May",
 "Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
-#Conversion map for month string to int
-month_int_map: dict = {
-    "Jan": 1,
-    "Feb": 2,
-    "Mar": 3,
-    "Apr": 4,
-    "May": 5,
-    "Jun": 6,
-    "Jul": 7,
-    "Aug": 8,
-    "Sep": 9,
-    "Oct": 10,
-    "Nov": 11,
-    "Dec": 12
-}
-
 #open file and read individual strings for acronym inclusion
 with open('missoula.txt', 'r') as file:
     content = file.read()
