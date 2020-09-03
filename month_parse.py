@@ -1,9 +1,26 @@
+from datetime import datetime
 #Holds string content of file
 content = ""
 
 #Build list of month acronyms:
 month_acronyms: list = ["Jan","Feb","Mar","Apr","May",
 "Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
+#Conversion map for month string to int
+month_int_map: dict = {
+    "Jan": 1,
+    "Feb": 2,
+    "Mar": 3,
+    "Apr": 4,
+    "May": 5,
+    "Jun": 6,
+    "Jul": 7,
+    "Aug": 8,
+    "Sep": 9,
+    "Oct": 10,
+    "Nov": 11,
+    "Dec": 12
+}
 
 #open file and read individual strings for acronym inclusion
 with open('missoula.txt', 'r') as file:
@@ -78,11 +95,22 @@ def set_years(day_month: list, year_index: int) -> list:
             year += 1
             year_day_month.append(str(year) + "-" + month)
         else:
+            #incremented_year = False
             year_day_month.append(str(year) + "-" + month)
     return(year_day_month)
+
+def set_date_object(ydm: list, in_fmt: str ="%Y-%d-%b" , out_fmt: str = "%Y-%m-%d"):
+    date_objects: list = []
+    date_output: list = []
+    for date in ydm:
+        date_objects.append(datetime.strptime(date, in_fmt))
+    for date_object in date_objects:
+        date_output.append(datetime.strftime(date_object, out_fmt))
+    return(date_output)
 
 
 months: list = get_months(month_acronyms, content)
 day_months: list = get_day_month(months)
 year_day_months: list = set_years(day_months, 2015)
-print(year_day_months)
+final_list = set_date_object(year_day_months)
+print(final_list)
